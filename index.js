@@ -4,6 +4,10 @@ const cors = require('cors')
 const articleRoute = require('./routes/articles')
 const multer = require('multer')
 const path = require('path')
+const PORT = process.env.PORT || 5000
+
+// process.env.PORT
+// process.env.NODE_ENV => production or undefined
 
 const fileStorage = multer.diskStorage({
     destination: (req, file, cb) =>{
@@ -31,6 +35,9 @@ app.use('/images', express.static(path.join(__dirname, 'images')))
 // body yang dikirimkan harus bernama image
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
 
+app.get("/", (req,res)=>{
+    res.json("Hello World")
+})
 // app.get('/',(req,res)=>{
 //     // var today = new Date()
 //     // var dd = String(today.getDate()).padStart(2, '0')
@@ -42,6 +49,6 @@ app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
 
 app.use("/api/v1/blog", articleRoute)
 
-app.listen(5000,()=>{
-    console.log("Server is running on port 5000");
+app.listen(PORT,()=>{
+    console.log(`Server is running on port ${PORT}`);
 })

@@ -3,14 +3,19 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "engines": {
+    "node": "12.16.1",
+    "npm": "6.13.4"
   },
-  "author": "",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "RizkyFransisca",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "dompurify": "^2.2.7",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsdom": "^16.5.3",
     "multer": "^1.4.2",
