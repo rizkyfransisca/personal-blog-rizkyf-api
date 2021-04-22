@@ -36,16 +36,8 @@ app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
 
 app.get("/", (req,res)=>{
-    res.json("Hallo Selamat Datang")
+    res.json("Hallo Selamat Datang Di Personal Blog Saya")
 })
-// app.get('/',(req,res)=>{
-//     // var today = new Date()
-//     // var dd = String(today.getDate()).padStart(2, '0')
-//     // var mm = String(today.getMonth() + 1).padStart(2, '0')
-//     // var yyyy = today.getFullYear()
-//     // today = dd + '/' + mm + '/' + yyyy
-//     res.send(today)
-// })
 
 app.use("/api/v1/blog", articleRoute)
 
