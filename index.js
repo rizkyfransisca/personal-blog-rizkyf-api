@@ -36,7 +36,7 @@ app.use('/images', express.static(path.join(__dirname, 'images')))
 app.use(multer({storage: fileStorage, fileFilter: fileFilter}).single('image'))
 
 app.get("/", (req,res)=>{
-    res.json("Hello World")
+    res.json("Hallo Selamat Datang Di Personal Blog Pertama Saya")
 })
 // app.get('/',(req,res)=>{
 //     // var today = new Date()
