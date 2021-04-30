@@ -41,7 +41,7 @@ router.post("/", async(req,res)=>{
         const timeCreated = new Date()
         const sanitizeDescription = htmlPurify.sanitize(description)
         const newArticle = await pool.query("INSERT INTO blogs (title, author, description, timeCreated, slug, image) VALUES($1, $2, $3, $4, $5, $6) RETURNING *", [title,author,sanitizeDescription,timeCreated,slug,image])
-        res.status(200).json({"status" : 200, "message" : "Success Create New Article", "result" : newArticle.rows[0]})
+        res.status(201).json({"status" : 201, "message" : "Success Create New Article", "result" : newArticle.rows[0]})
     } catch (err) {
         console.error(err.message)
     }
@@ -62,7 +62,7 @@ router.put("/:id", async(req,res)=>{
         const slug = slugify(title, {lower: true, strict: true})
         const sanitizeDescription = htmlPurify.sanitize(description)
         const updateArticle = await pool.query("UPDATE blogs SET title = $1, author = $2, description = $3, slug = $4, image = $5 WHERE blog_id = $6 RETURNING *", [title, author, sanitizeDescription, slug,image, id])
-        res.status(200).json({"status" : 200, "message" : "Success Update Article", "result" : updateArticle.rows[0]})
+        res.status(201).json({"status" : 201, "message" : "Success Update Article", "result" : updateArticle.rows[0]})
     } catch (err) {
         console.error(err.message)
     }
